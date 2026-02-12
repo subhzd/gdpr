@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/png" href="https://gdpr.aimaverick.me/gdpr.png">
+    <link rel="apple-touch-icon" href="https://gdpr.aimaverick.me/gdpr.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="General Data Protection Regulation (GDPR) | EU">
+    <meta property="og:description" content="Reference guide for the GDPR (Regulation (EU) 2016/679) with simplified summaries. Rights, lawful basis, and controller obligations.">
+    <meta property="og:image" content="https://gdpr.aimaverick.me/gdpr_og.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GDPR - General Data Protection Regulation">
+    <meta name="twitter:description" content="Reference guide for the GDPR with simplified summaries.">
+    <meta name="twitter:image" content="https://gdpr.aimaverick.me/gdpr_og.png">
+
+    <title>GDPR - General Data Protection Regulation | Guide</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="cdn.tailwindcss.com"></script>
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        eu: {
+                            gold: '#FFCC00',  // EU Flag Yellow
+                            blue: '#003399',  // EU Flag Blue
+                            red: '#cc0000',   // Alert Red
+                            green: '#008000', // Success Green
+                            light: '#F3F4F6'
+                        },
+                        primary: '#003399', 
+                        secondary: '#475569',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                        light: '#f8fafc',
+                    },
+                    fontFamily: {
+                        serif: ['Merriweather', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@300;400;700;900&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .official-font { font-family: 'Merriweather', serif; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #334155; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Official Header Style */
+        .official-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .dark .official-header {
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid #1e293b;
+        }
+
+        /* Card Styles */
+        .official-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        .dark .official-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+        }
+
+        .highlight {
+            background-color: #fef08a; /* Yellow-200 */
+            color: #000;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        .dark .highlight {
+            background-color: #ca8a04; /* Yellow-600 */
+            color: #fff;
+        }
+
+        /* Collapsible transitions */
+        .chapter-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 5000px;
+            opacity: 1;
+            overflow: hidden;
+        }
+        .chapter-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        .chevron.collapsed {
+            transform: rotate(-90deg);
+        }
+
+        /* Hover Anchor Link */
+        .anchor-link {
+            opacity: 0;
+            transition: opacity 0.2s;
+            margin-left: 0.5rem;
+            color: #003399;
+            text-decoration: none;
+            font-size: 0.7em;
+            vertical-align: middle;
+        }
+        .dark .anchor-link { color: #60a5fa; }
+        h2:hover .anchor-link, h3:hover .anchor-link { opacity: 1; }
+
+        /* Scroll margin for sticky headers */
+        section, article, .chapter-header {
+            scroll-margin-top: 6rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-darker dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 official-header transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <button id="menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                
+                <!-- Emblem & Title -->
+                <div class="flex items-center gap-3">
+                    <!-- App Icon -->
+                    <img src="gdpr.png" alt="GDPR Logo" class="h-14 w-14 rounded-full border-2 border-eu-gold shadow-sm object-cover bg-eu-blue">
+                    
+                    <div class="flex flex-col">
+                        <span class="text-[0.6rem] uppercase tracking-widest font-bold text-slate-500 dark:text-slate-400">European Union</span>
+                        <span class="font-bold text-lg sm:text-xl tracking-tight leading-tight official-font text-eu-blue dark:text-blue-300">GDPR</span>
+                        <span class="text-[0.55rem] font-semibold text-eu-gold dark:text-yellow-500 uppercase">Regulation (EU) 2016/679</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-1 max-w-md mx-4 lg:mx-8 hidden sm:block">
+                <div class="relative group">
+                    <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-eu-blue transition-colors"></i>
+                    <input type="text" id="search-input" placeholder="Search GDPR (e.g., 'consent', 'erasure')..." 
+                        class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-eu-blue focus:border-transparent transition-all outline-none placeholder:text-slate-400">
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <!-- Download PDF Button -->
+                <a href="gdpr_en_txt.pdf" download class="hidden sm:flex items-center gap-2 px-3 py-1.5 text-xs font-semibold rounded-md bg-eu-blue/10 text-eu-blue dark:text-blue-300 dark:bg-blue-900/20 hover:bg-eu-blue hover:text-white dark:hover:bg-blue-800 transition-all border border-eu-blue/20">
+                    <i data-lucide="download" class="w-3 h-3"></i>
+                    PDF
+                </a>
+
+                <!-- Simplified vs Official Toggle -->
+                <div class="flex bg-slate-100 dark:bg-slate-800 rounded-lg p-1 border border-slate-200 dark:border-slate-700">
+                    <button id="btn-official" class="px-2 sm:px-3 py-1.5 text-[10px] sm:text-xs font-medium rounded-md transition-all text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200">Official</button>
+                    <button id="btn-simplified" class="px-2 sm:px-3 py-1.5 text-[10px] sm:text-xs font-bold rounded-md transition-all bg-white dark:bg-slate-700 text-eu-green dark:text-green-400 shadow-sm ring-1 ring-slate-200 dark:ring-slate-600">Simplified</button>
+                </div>
+
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center">
+                    <i data-lucide="sun" class="w-5 h-5 dark:hidden"></i>
+                    <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Search Bar (Always Visible) -->
+        <div id="mobile-search-bar" class="sm:hidden px-4 py-3 bg-slate-50 dark:bg-darker border-t border-b border-slate-200 dark:border-slate-800 flex flex-col gap-3 shadow-inner">
+            <div class="relative">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+                <input type="text" id="search-input-mobile" placeholder="Search GDPR..." class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md py-2 pl-9 pr-4 text-sm outline-none focus:ring-2 focus:ring-eu-blue focus:border-transparent">
+            </div>
+            <a href="gdpr_en_txt.pdf" download class="flex justify-center items-center gap-2 w-full py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-300 rounded-md hover:bg-slate-50 dark:hover:bg-slate-700">
+                <i data-lucide="download" class="w-3 h-3"></i> Download PDF
+            </a>
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-slate-900/50 z-40 lg:hidden hidden backdrop-blur-sm transition-opacity opacity-0"></div>
+
+    <!-- Main Content Wrapper -->
+    <div class="flex pt-40 sm:pt-20 min-h-screen max-w-7xl mx-auto">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed lg:sticky top-20 left-0 h-[calc(100vh-5rem)] w-72 bg-white dark:bg-darker border-r border-slate-200 dark:border-slate-800 z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-y-auto pb-10 shadow-xl lg:shadow-none">
+            <div class="p-4">
+                <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4 px-2 border-b border-slate-100 dark:border-slate-800 pb-2">
+                    Chapters
+                </div>
+                <nav id="toc-container" class="space-y-1">
+                    <!-- JS Injected -->
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 min-w-0 px-4 sm:px-8 lg:px-10 py-8 pb-20">
+            
+            <!-- Official Header Section -->
+            <div class="mb-10 text-center border-b-2 border-slate-200 dark:border-slate-700 pb-8 animate-fade-in">
+                <h1 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">
+                    General Data Protection Regulation
+                </h1>
+                <p class="text-sm font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4">
+                    Regulation (EU) 2016/679
+                </p>
+                <div id="header-intro">
+                    <p class="text-slate-600 dark:text-slate-300 max-w-3xl mx-auto serif italic leading-relaxed">
+                        "The protection of natural persons in relation to the processing of personal data is a fundamental right. Article 8(1) of the Charter of Fundamental Rights of the European Union and Article 16(1) of the Treaty on the Functioning of the European Union provide that everyone has the right to the protection of personal data concerning him or her."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Summary Cards (Highlights) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+                <!-- Card 1: Consent/Basis -->
+                <div class="official-card p-4 rounded-lg border-t-4 border-t-eu-blue hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Lawfulness</span>
+                        <i data-lucide="scale" class="w-4 h-4 text-eu-blue"></i>
+                    </div>
+                    <div class="text-xl font-bold text-slate-800 dark:text-white mb-1">Legal Basis</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-tight">Data processing requires valid consent, contract, or legitimate interest.</p>
+                </div>
+
+                <!-- Card 2: Rights -->
+                <div class="official-card p-4 rounded-lg border-t-4 border-t-eu-gold hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Control</span>
+                        <i data-lucide="eye" class="w-4 h-4 text-yellow-600"></i>
+                    </div>
+                    <div class="text-xl font-bold text-slate-800 dark:text-white mb-1">Data Rights</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-tight">Access, correct, erase, or port your personal information easily.</p>
+                </div>
+
+                <!-- Card 3: Sensitive Info -->
+                <div class="official-card p-4 rounded-lg border-t-4 border-t-eu-red hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Special Category</span>
+                        <i data-lucide="lock" class="w-4 h-4 text-red-600"></i>
+                    </div>
+                    <div class="text-xl font-bold text-slate-800 dark:text-white mb-1">Sensitive Data</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-tight">Strict prohibitions on processing health, biometric, or genetic data.</p>
+                </div>
+
+                <!-- Card 4: Authority -->
+                <div class="official-card p-4 rounded-lg border-t-4 border-t-slate-600 hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Enforcement</span>
+                        <i data-lucide="landmark" class="w-4 h-4 text-slate-600"></i>
+                    </div>
+                    <div class="text-xl font-bold text-slate-800 dark:text-white mb-1">DPA & Fines</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-tight">Regulated by national DPAs. Fines up to €20M or 4% global turnover.</p>
+                </div>
+            </div>
+
+            <!-- SIMPLIFIED INFOGRAPHIC (Image Based) -->
+            <div id="eu-infographic" class="hidden mb-16 animate-fade-in border-b-2 border-slate-100 dark:border-slate-800 pb-12">
+                <div class="text-center mb-10">
+                    <span class="bg-eu-green/10 text-eu-green dark:bg-green-900/30 dark:text-green-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-eu-green/20">Simplified Guide</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-slate-100 mt-4 official-font">How the GDPR Works</h2>
+                    <p class="text-slate-500 dark:text-slate-400 mt-2 max-w-xl mx-auto text-sm">Visual summary of rights, roles, and obligations.</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <!-- INLINE SVG CONTAINER -->
+                    <div class="w-full max-w-4xl h-auto rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 mb-6 overflow-hidden bg-slate-50">
+                        <svg id="eu-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 920" style="font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; width: 100%; height: auto; display: block;">
+                          <!-- Background -->
+                          <rect width="800" height="920" fill="#f8fafc"/>
+                          
+                          <!-- Header Section -->
+                          <rect width="800" height="100" fill="#003399"/>
+                          <rect y="95" width="800" height="5" fill="#FFCC00"/>
+                          <text x="400" y="50" text-anchor="middle" fill="white" font-size="32" font-weight="bold">GDPR</text>
+                          <text x="400" y="80" text-anchor="middle" fill="#e2e8f0" font-size="16">General Data Protection Regulation (EU)</text>
+                          
+                          <!-- SECTION 1: THE ECOSYSTEM -->
+                          <g transform="translate(0, 140)">
+                            <text x="400" y="0" text-anchor="middle" fill="#cc0000" font-size="22" font-weight="bold" text-transform="uppercase">1. The Ecosystem</text>
+                            
+                            <!-- Data Subject -->
+                            <g transform="translate(60, 40)">
+                              <circle cx="60" cy="60" r="40" fill="#e0f2fe" stroke="#003399" stroke-width="2"/>
+                              <circle cx="60" cy="50" r="14" fill="#003399"/>
+                              <path d="M40 85 C40 70 50 68 60 68 C70 68 80 70 80 85" stroke="#003399" stroke-width="4" stroke-linecap="round" fill="none"/>
+                              
+                              <text x="60" y="125" text-anchor="middle" font-weight="bold" fill="#334155">DATA SUBJECT</text>
+                              <text x="60" y="140" text-anchor="middle" font-size="12" fill="#64748b">(The Individual)</text>
+                            </g>
+
+                            <!-- Data Flow Arrow -->
+                            <path d="M170 100 L230 100" stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrowhead)"/>
+                            <text x="200" y="90" text-anchor="middle" font-size="10" fill="#64748b">Personal Data</text>
+
+                            <!-- Controller -->
+                            <g transform="translate(250, 40)">
+                              <rect x="0" y="20" width="120" height="80" rx="4" fill="#fefce8" stroke="#FFCC00" stroke-width="2"/>
+                              <text x="60" y="55" text-anchor="middle" font-weight="bold" font-size="14" fill="#854d0e">CONTROLLER</text>
+                              <text x="60" y="75" text-anchor="middle" font-size="10" fill="#854d0e">Determines "Why"</text>
+                              <text x="60" y="88" text-anchor="middle" font-size="10" fill="#854d0e">& "How" to process</text>
+                            </g>
+
+                            <!-- Processor Arrow -->
+                            <path d="M380 80 L460 80" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4" marker-end="url(#arrowhead)"/>
+                            <text x="420" y="70" text-anchor="middle" font-size="10" fill="#64748b">Delegates to</text>
+
+                            <!-- Processor / 3rd Party -->
+                            <g transform="translate(480, 30)">
+                                <!-- Processor -->
+                                <rect x="0" y="0" width="100" height="50" rx="4" fill="#f1f5f9" stroke="#64748b" stroke-width="1"/>
+                                <text x="50" y="30" text-anchor="middle" font-size="11" fill="#475569">Processor</text>
+
+                                <!-- Third Party -->
+                                <rect x="0" y="70" width="100" height="50" rx="4" fill="#fef2f2" stroke="#ef4444" stroke-width="1"/>
+                                <text x="50" y="100" text-anchor="middle" font-size="11" fill="#991b1b">Third Party</text>
+                            </g>
+
+                            <!-- DPA -->
+                            <g transform="translate(640, 30)">
+                                <path d="M50 10 L10 40 L90 40 Z" fill="#334155"/>
+                                <rect x="20" y="40" width="60" height="50" fill="#cbd5e1"/>
+                                <rect x="35" y="55" width="30" height="35" fill="white"/>
+                                <text x="50" y="115" text-anchor="middle" font-weight="bold" fill="#1e293b">DPA</text>
+                                <text x="50" y="130" text-anchor="middle" font-size="10" fill="#64748b">Regulator</text>
+                            </g>
+                          </g>
+
+                          <!-- Divider -->
+                          <line x1="100" y1="335" x2="700" y2="335" stroke="#e2e8f0" stroke-width="2"/>
+
+                          <!-- SECTION 2: KEY DEFINITIONS -->
+                          <g transform="translate(0, 365)">
+                            <text x="400" y="0" text-anchor="middle" fill="#003399" font-size="22" font-weight="bold" text-transform="uppercase">2. Core Principles</text>
+
+                            <!-- Minimisation -->
+                            <g transform="translate(50, 40)">
+                                <rect width="200" height="80" rx="8" fill="#eff6ff" stroke="#003399" stroke-width="1"/>
+                                <text x="100" y="30" text-anchor="middle" font-weight="bold" fill="#003399">Data Minimisation</text>
+                                <text x="100" y="50" text-anchor="middle" font-size="11" fill="#1e40af">Only collect what is</text>
+                                <text x="100" y="65" text-anchor="middle" font-size="11" fill="#1e40af">absolutely necessary.</text>
+                            </g>
+
+                            <!-- Purpose Limitation -->
+                            <g transform="translate(280, 40)">
+                                <rect width="200" height="80" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="1"/>
+                                <text x="100" y="30" text-anchor="middle" font-weight="bold" fill="#be123c">Purpose Limitation</text>
+                                <text x="100" y="50" text-anchor="middle" font-size="11" fill="#9f1239">Don't use collected data</text>
+                                <text x="100" y="65" text-anchor="middle" font-size="11" fill="#9f1239">for incompatible reasons.</text>
+                            </g>
+
+                            <!-- Lawful Basis -->
+                            <g transform="translate(510, 40)">
+                                <rect width="200" height="80" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1"/>
+                                <text x="100" y="30" text-anchor="middle" font-weight="bold" fill="#b45309">Lawful Basis</text>
+                                <text x="100" y="50" text-anchor="middle" font-size="11" fill="#92400e">Must have Consent, Contract,</text>
+                                <text x="100" y="65" text-anchor="middle" font-size="11" fill="#92400e">or Legitimate Interest.</text>
+                            </g>
+                          </g>
+
+                          <!-- Divider -->
+                          <line x1="100" y1="535" x2="700" y2="535" stroke="#e2e8f0" stroke-width="2"/>
+
+                          <!-- SECTION 3: YOUR RIGHTS -->
+                          <g transform="translate(0, 575)">
+                            <text x="400" y="0" text-anchor="middle" fill="#008000" font-size="22" font-weight="bold" text-transform="uppercase">3. Your Data Rights</text>
+
+                            <!-- Icons Row 1 -->
+                            <g transform="translate(150, 50)">
+                                <!-- Access -->
+                                <g>
+                                    <circle cx="30" cy="30" r="30" fill="#dbeafe"/>
+                                    <text x="30" y="38" text-anchor="middle" font-size="20">📜</text>
+                                    <text x="30" y="75" text-anchor="middle" font-weight="bold" fill="#1e293b" font-size="14">Access</text>
+                                    <text x="30" y="90" text-anchor="middle" font-size="10" fill="#64748b">Get a copy of data</text>
+                                </g>
+
+                                <!-- Erasure -->
+                                <g transform="translate(180, 0)">
+                                    <circle cx="30" cy="30" r="30" fill="#fee2e2"/>
+                                    <text x="30" y="38" text-anchor="middle" font-size="20">🗑️</text>
+                                    <text x="30" y="75" text-anchor="middle" font-weight="bold" fill="#1e293b" font-size="14">Erasure</text>
+                                    <text x="30" y="90" text-anchor="middle" font-size="10" fill="#64748b">Be forgotten</text>
+                                </g>
+                                
+                                <!-- Rectification -->
+                                <g transform="translate(360, 0)">
+                                    <circle cx="30" cy="30" r="30" fill="#dcfce7"/>
+                                    <text x="30" y="38" text-anchor="middle" font-size="20">✏️</text>
+                                    <text x="30" y="75" text-anchor="middle" font-weight="bold" fill="#1e293b" font-size="14">Rectification</text>
+                                    <text x="30" y="90" text-anchor="middle" font-size="10" fill="#64748b">Fix errors</text>
+                                </g>
+                            </g>
+
+                            <!-- Icons Row 2 -->
+                            <g transform="translate(240, 160)">
+                                <!-- Portability -->
+                                <g>
+                                    <rect x="-40" y="0" width="80" height="40" rx="20" fill="#fef9c3"/>
+                                    <text x="0" y="27" text-anchor="middle" font-size="16">🧳 Port</text>
+                                    <text x="0" y="60" text-anchor="middle" font-weight="bold" fill="#1e293b" font-size="14">Portability</text>
+                                    <text x="0" y="75" text-anchor="middle" font-size="10" fill="#64748b">Transfer data easily</text>
+                                </g>
+
+                                <!-- Object -->
+                                <g transform="translate(180, 0)">
+                                    <rect x="-40" y="0" width="80" height="40" rx="20" fill="#f3e8ff"/>
+                                    <text x="0" y="27" text-anchor="middle" font-size="16">🚫 Stop</text>
+                                    <text x="0" y="60" text-anchor="middle" font-weight="bold" fill="#1e293b" font-size="14">Object</text>
+                                    <text x="0" y="75" text-anchor="middle" font-size="10" fill="#64748b">Say no to profiling</text>
+                                </g>
+                            </g>
+                          </g>
+
+                          <!-- Footer -->
+                          <rect y="880" width="800" height="40" fill="#f1f5f9"/>
+                          <text x="780" y="905" text-anchor="end" fill="#cbd5e1" font-size="10" style="font-style: italic;">Generated by GDPR App</text>
+                          
+                          <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                              <polygon points="0 0, 10 3.5, 0 7" fill="#cbd5e1" />
+                            </marker>
+                          </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Container -->
+            <div id="content-area" class="space-y-12">
+                <!-- JS Injected -->
+            </div>
+            
+            <!-- Footer -->
+            <div class="mt-20 pt-8 border-t border-slate-200 dark:border-slate-800 text-center pb-24">
+                <div class="mb-8">
+                    <p class="text-xs text-slate-400 opacity-75">This content is for educational purposes only. Refer to the official EU Regulation (EU) 2016/679 text for legal authority.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- FIXED THIN FOOTER -->
+    <footer class="fixed bottom-0 left-0 w-full z-50 bg-white/95 dark:bg-darker/95 backdrop-blur-sm border-t border-slate-200 dark:border-slate-800 py-2 px-4 md:px-8 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-slate-500 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+        <div class="flex items-center gap-1">
+            <span>&copy; 2026</span>
+            <a href="https://www.aimaverick.me" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 hover:underline transition-colors font-medium">
+                @amsubhzd
+            </a>
+        </div>
+        <div class="italic">
+            Designed by <span class="font-semibold text-slate-600 dark:text-slate-400">AIMaverick</span>
+        </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <button id="scroll-top" class="fixed bottom-16 right-6 p-3 rounded-full bg-eu-blue text-white shadow-lg hover:bg-blue-800 transition-all transform translate-y-20 opacity-0 z-50 ring-2 ring-white dark:ring-slate-800">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
+
+    <script>
+        // --- DATA CONTENT FROM PDF (GDPR) ---
+        // Covering all 11 Chapters of the Regulation
+        const actData = [
+            {
+                id: "chapter-1",
+                title: "Chapter I: General provisions",
+                sections: [
+                    {
+                        id: "article-2",
+                        title: "Article 2: Material scope",
+                        content: `1. This Regulation applies to the processing of personal data wholly or partly by automated means and to the processing other than by automated means of personal data which form part of a filing system or are intended to form part of a filing system.\n\n2. This Regulation does not apply to the processing of personal data:\n(a) in the course of an activity which falls outside the scope of Union law;\n(c) by a natural person in the course of a purely personal or household activity;\n(d) by competent authorities for the purposes of the prevention, investigation, detection or prosecution of criminal offences...`,
+                        simplified: "🌍 <strong>Scope:</strong> The GDPR applies to almost all personal data processed electronically or kept in a filing system, with few exceptions (like purely personal use or law enforcement investigations)."
+                    },
+                    {
+                        id: "article-3",
+                        title: "Article 3: Territorial scope",
+                        content: `1. This Regulation applies to the processing of personal data in the context of the activities of an establishment of a controller or a processor in the Union, regardless of whether the processing takes place in the Union or not.\n\n2. This Regulation applies to the processing of personal data of data subjects who are in the Union by a controller or processor not established in the Union, where the processing activities are related to:\n(a) the offering of goods or services... to such data subjects in the Union; or\n(b) the monitoring of their behaviour as far as their behaviour takes place within the Union.`,
+                        simplified: "🗺️ <strong>Global Reach:</strong> The GDPR applies to any organization based in the EU, AND any organization outside the EU if they offer goods/services to people inside the EU, or monitor the behavior of people in the EU."
+                    },
+                    {
+                        id: "article-4",
+                        title: "Article 4: Definitions",
+                        content: `(1) 'personal data' means any information relating to an identified or identifiable natural person ('data subject'); an identifiable natural person is one who can be identified, directly or indirectly, in particular by reference to an identifier such as a name, an identification number, location data, an online identifier...\n\n(7) 'controller' means the natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data;\n\n(8) 'processor' means a natural or legal person, public authority, agency or other body which processes personal data on behalf of the controller;`,
+                        simplified: "📚 <strong>Definitions:</strong><br>• <em>Personal Data:</em> Any info linked to an identifiable person.<br>• <em>Controller:</em> The entity deciding WHY and HOW data is processed.<br>• <em>Processor:</em> The entity processing data ON BEHALF of the Controller."
+                    }
+                ]
+            },
+            {
+                id: "chapter-2",
+                title: "Chapter II: Principles",
+                sections: [
+                    {
+                        id: "article-5",
+                        title: "Article 5: Principles relating to processing of personal data",
+                        content: `1. Personal data shall be:\n(a) processed lawfully, fairly and in a transparent manner... ('lawfulness, fairness and transparency');\n(b) collected for specified, explicit and legitimate purposes... ('purpose limitation');\n(c) adequate, relevant and limited to what is necessary... ('data minimisation');\n(d) accurate and, where necessary, kept up to date... ('accuracy');\n(e) kept in a form which permits identification of data subjects for no longer than is necessary... ('storage limitation');\n(f) processed in a manner that ensures appropriate security... ('integrity and confidentiality').\n\n2. The controller shall be responsible for, and be able to demonstrate compliance with, paragraph 1 ('accountability').`,
+                        simplified: "⚖️ <strong>Core Principles:</strong> Organizations must follow 6 golden rules: be lawful/transparent, only use data for stated purposes, collect as little as possible, keep it accurate, don't keep it forever, and keep it secure. The Controller is accountable for proving this."
+                    },
+                    {
+                        id: "article-6",
+                        title: "Article 6: Lawfulness of processing",
+                        content: `1. Processing shall be lawful only if and to the extent that at least one of the following applies:\n(a) the data subject has given consent...\n(b) processing is necessary for the performance of a contract...\n(c) processing is necessary for compliance with a legal obligation...\n(d) processing is necessary in order to protect the vital interests of the data subject...\n(e) processing is necessary for the performance of a task carried out in the public interest...\n(f) processing is necessary for the purposes of the legitimate interests pursued by the controller...`,
+                        simplified: "✅ <strong>Lawful Basis:</strong> You can only process data if you have a valid legal reason. The valid reasons are: Consent, Contract Fulfillment, Legal Obligation, Vital Interests (saving a life), Public Task, or Legitimate Interests."
+                    },
+                    {
+                        id: "article-9",
+                        title: "Article 9: Processing of special categories of personal data",
+                        content: `1. Processing of personal data revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, or trade union membership, and the processing of genetic data, biometric data for the purpose of uniquely identifying a natural person, data concerning health or data concerning a natural person's sex life or sexual orientation shall be prohibited.\n\n2. Paragraph 1 shall not apply if one of the following applies:\n(a) the data subject has given explicit consent...\n(b) processing is necessary for the purposes of carrying out the obligations... in the field of employment and social security...`,
+                        simplified: "🚫 <strong>Special Categories:</strong> Processing highly sensitive data (like health, genetics, race, religion) is strictly prohibited UNLESS you meet a specific, high-bar exception, such as getting explicit, affirmative consent."
+                    }
+                ]
+            },
+            {
+                id: "chapter-3",
+                title: "Chapter III: Rights of the data subject",
+                sections: [
+                    {
+                        id: "article-12",
+                        title: "Article 12: Transparent information",
+                        content: `1. The controller shall take appropriate measures to provide any information... relating to processing to the data subject in a concise, transparent, intelligible and easily accessible form, using clear and plain language, in particular for any information addressed specifically to a child.\n\n3. The controller shall provide information on action taken on a request... without undue delay and in any event within one month of receipt of the request.`,
+                        simplified: "⏱️ <strong>Communication:</strong> Privacy notices must be easy to read and understand (no complex legalese). When a user makes a rights request, the company must respond within one month."
+                    },
+                    {
+                        id: "article-15",
+                        title: "Article 15: Right of access",
+                        content: `1. The data subject shall have the right to obtain from the controller confirmation as to whether or not personal data concerning him or her are being processed, and, where that is the case, access to the personal data and the following information:\n(a) the purposes of the processing;\n(b) the categories of personal data concerned;\n(c) the recipients...\n(d) the envisaged period for which the personal data will be stored...`,
+                        simplified: "📜 <strong>Right of Access:</strong> You have the right to ask a company if they have your data. If they do, they must give you a free copy of it and explain why they have it and who they share it with."
+                    },
+                    {
+                        id: "article-17",
+                        title: "Article 17: Right to erasure ('right to be forgotten')",
+                        content: `1. The data subject shall have the right to obtain from the controller the erasure of personal data concerning him or her without undue delay and the controller shall have the obligation to erase personal data without undue delay where one of the following grounds applies:\n(a) the personal data are no longer necessary...\n(b) the data subject withdraws consent...\n(c) the data subject objects to the processing...`,
+                        simplified: "🗑️ <strong>Right to be Forgotten:</strong> You can ask a company to delete your personal data if they no longer need it, if you withdraw your consent, or if you successfully object to them using it."
+                    },
+                    {
+                        id: "article-20",
+                        title: "Article 20: Right to data portability",
+                        content: `1. The data subject shall have the right to receive the personal data concerning him or her, which he or she has provided to a controller, in a structured, commonly used and machine-readable format and have the right to transmit those data to another controller without hindrance...`,
+                        simplified: "🧳 <strong>Data Portability:</strong> You have the right to get your data back in an easy-to-read, digital format (like a CSV or JSON file) so you can take it and move it to a competing service provider."
+                    }
+                ]
+            },
+            {
+                id: "chapter-4",
+                title: "Chapter IV: Controller and processor",
+                sections: [
+                    {
+                        id: "article-24",
+                        title: "Article 24: Responsibility of the controller",
+                        content: `1. Taking into account the nature, scope, context and purposes of processing as well as the risks of varying likelihood and severity for the rights and freedoms of natural persons, the controller shall implement appropriate technical and organisational measures to ensure and to be able to demonstrate that processing is performed in accordance with this Regulation.`,
+                        simplified: "🏢 <strong>Accountability:</strong> The Controller is fully responsible for ensuring they follow the GDPR. They must put policies in place and be able to actively PROVE they are protecting your data."
+                    },
+                    {
+                        id: "article-25",
+                        title: "Article 25: Data protection by design and by default",
+                        content: `1. ...the controller shall, both at the time of the determination of the means for processing and at the time of the processing itself, implement appropriate technical and organisational measures, such as pseudonymisation...\n\n2. The controller shall implement appropriate technical and organisational measures for ensuring that, by default, only personal data which are necessary for each specific purpose of the processing are processed.`,
+                        simplified: "🛠️ <strong>Privacy by Design:</strong> Privacy can't be an afterthought. Products and systems must be built with privacy and data protection embedded from the very beginning. By default, privacy settings should be set to their highest level."
+                    },
+                    {
+                        id: "article-28",
+                        title: "Article 28: Processor",
+                        content: `1. Where processing is to be carried out on behalf of a controller, the controller shall use only processors providing sufficient guarantees to implement appropriate technical and organisational measures...\n\n3. Processing by a processor shall be governed by a contract or other legal act... that sets out the subject-matter and duration of the processing, the nature and purpose of the processing...`,
+                        simplified: "🤝 <strong>Vendor Contracts:</strong> If a company hires a third-party (like a cloud host) to process your data, they must sign a strict Data Processing Agreement (DPA) ensuring the third-party also follows the GDPR."
+                    },
+                    {
+                        id: "article-32",
+                        title: "Article 32: Security of processing",
+                        content: `1. ...the controller and the processor shall implement appropriate technical and organisational measures to ensure a level of security appropriate to the risk, including inter alia as appropriate:\n(a) the pseudonymisation and encryption of personal data;\n(b) the ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems...`,
+                        simplified: "🔒 <strong>Security:</strong> Companies must use strong security measures like encryption and pseudonymization to protect your data from hackers, accidental leaks, or system failures."
+                    },
+                    {
+                        id: "article-33",
+                        title: "Article 33: Notification of a personal data breach",
+                        content: `1. In the case of a personal data breach, the controller shall without undue delay and, where feasible, not later than 72 hours after having become aware of it, notify the personal data breach to the supervisory authority... unless the personal data breach is unlikely to result in a risk to the rights and freedoms of natural persons.`,
+                        simplified: "🚨 <strong>Breach Notification:</strong> If a company gets hacked or loses your data, they must report the breach to the authorities within 72 hours of discovering it."
+                    }
+                ]
+            },
+            {
+                id: "chapter-5",
+                title: "Chapter V: Transfers of personal data to third countries",
+                sections: [
+                    {
+                        id: "article-44",
+                        title: "Article 44: General principle for transfers",
+                        content: `Any transfer of personal data which are undergoing processing or are intended for processing after transfer to a third country or to an international organisation shall take place only if, subject to the other provisions of this Regulation, the conditions laid down in this Chapter are complied with by the controller and processor...`,
+                        simplified: "✈️ <strong>International Transfers:</strong> You cannot transfer EU citizens' data outside of the European Economic Area (EEA) unless the destination country or the specific transfer mechanism provides an equivalent level of protection."
+                    },
+                    {
+                        id: "article-45",
+                        title: "Article 45: Transfers on the basis of an adequacy decision",
+                        content: `1. A transfer of personal data to a third country or an international organisation may take place where the Commission has decided that the third country, a territory or one or more specified sectors within that third country... ensures an adequate level of protection. Such a transfer shall not require any specific authorisation.`,
+                        simplified: "👍 <strong>Adequacy Decisions:</strong> The EU Commission maintains a 'white-list' of countries whose privacy laws are deemed as strong as the GDPR. Data can flow freely to these countries."
+                    }
+                ]
+            },
+            {
+                id: "chapter-6",
+                title: "Chapter VI: Independent supervisory authorities",
+                sections: [
+                    {
+                        id: "article-51",
+                        title: "Article 51: Supervisory authority",
+                        content: `1. Each Member State shall provide for one or more independent public authorities to be responsible for monitoring the application of this Regulation, in order to protect the fundamental rights and freedoms of natural persons in relation to processing and to facilitate the free flow of personal data within the Union...`,
+                        simplified: "🏛️ <strong>The DPAs:</strong> Every EU country must have an independent Data Protection Authority (DPA) to enforce the GDPR, investigate complaints, and monitor compliance."
+                    },
+                    {
+                        id: "article-58",
+                        title: "Article 58: Powers",
+                        content: `2. Each supervisory authority shall have all of the following corrective powers:\n(a) to issue warnings...\n(d) to order the controller or processor to bring processing operations into compliance...\n(f) to impose a temporary or definitive limitation including a ban on processing;\n(i) to impose an administrative fine pursuant to Article 83...`,
+                        simplified: "⚡ <strong>DPA Powers:</strong> The authorities have massive power. They can order audits, force companies to delete data, temporarily ban them from processing data entirely, and issue massive financial penalties."
+                    }
+                ]
+            },
+            {
+                id: "chapter-7",
+                title: "Chapter VII: Cooperation and consistency",
+                sections: [
+                    {
+                        id: "article-60",
+                        title: "Article 60: Cooperation between the lead supervisory authority and the other supervisory authorities concerned",
+                        content: `1. The lead supervisory authority shall cooperate with the other supervisory authorities concerned in accordance with this Article in an endeavour to reach consensus. The lead supervisory authority and the supervisory authorities concerned shall exchange all relevant information with each other.`,
+                        simplified: "🤝 <strong>One-Stop-Shop:</strong> If a company operates across the EU, they mostly deal with one 'Lead' DPA where their main EU headquarters is located, who then coordinates with the other national DPAs."
+                    },
+                    {
+                        id: "article-68",
+                        title: "Article 68: European Data Protection Board",
+                        content: `1. The European Data Protection Board (the 'Board') is hereby established as a body of the Union and shall have legal personality.\n3. The Board shall be composed of the head of one supervisory authority of each Member State and of the European Data Protection Supervisor...`,
+                        simplified: "🇪🇺 <strong>The EDPB:</strong> An overarching EU board made up of the heads of all national DPAs. They ensure the GDPR is applied consistently across all of Europe and issue official guidance."
+                    }
+                ]
+            },
+            {
+                id: "chapter-8",
+                title: "Chapter VIII: Remedies, liability and penalties",
+                sections: [
+                    {
+                        id: "article-77",
+                        title: "Article 77: Right to lodge a complaint",
+                        content: `1. Without prejudice to any other administrative or judicial remedy, every data subject shall have the right to lodge a complaint with a supervisory authority, in particular in the Member State of his or her habitual residence, place of work or place of the alleged infringement if the data subject considers that the processing of personal data relating to him or her infringes this Regulation.`,
+                        simplified: "⚖️ <strong>Complain to the DPA:</strong> If you believe a company is violating your privacy rights, you have the right to file an official complaint with the Data Protection Authority in your country."
+                    },
+                    {
+                        id: "article-82",
+                        title: "Article 82: Right to compensation and liability",
+                        content: `1. Any person who has suffered material or non-material damage as a result of an infringement of this Regulation shall have the right to receive compensation from the controller or processor for the damage suffered.`,
+                        simplified: "💸 <strong>Right to Sue:</strong> If you suffer financial loss or even non-material damage (like severe distress) because a company broke the GDPR, you have the right to sue them for compensation."
+                    },
+                    {
+                        id: "article-83",
+                        title: "Article 83: General conditions for imposing administrative fines",
+                        content: `5. Infringements of the following provisions shall... be subject to administrative fines up to 20 000 000 EUR, or in the case of an undertaking, up to 4% of the total worldwide annual turnover of the preceding financial year, whichever is higher:\n(a) the basic principles for processing, including conditions for consent, pursuant to Articles 5, 6, 7 and 9;\n(b) the data subjects' rights pursuant to Articles 12 to 22...`,
+                        simplified: "💥 <strong>Massive Fines:</strong> If a company breaks the core rules of the GDPR, they can be fined up to €20 Million, or 4% of their total global revenue (whichever number is bigger)."
+                    }
+                ]
+            },
+            {
+                id: "chapter-9",
+                title: "Chapter IX: Provisions relating to specific processing situations",
+                sections: [
+                    {
+                        id: "article-85",
+                        title: "Article 85: Processing and freedom of expression and information",
+                        content: `1. Member States shall by law reconcile the right to the protection of personal data pursuant to this Regulation with the right to freedom of expression and information, including processing for journalistic purposes and the purposes of academic, artistic or literary expression.`,
+                        simplified: "📰 <strong>Journalism Exemption:</strong> Privacy rights are balanced against freedom of expression. Journalists and academics are often exempt from strict GDPR rules when publishing news or art."
+                    },
+                    {
+                        id: "article-88",
+                        title: "Article 88: Processing in the context of employment",
+                        content: `1. Member States may, by law or by collective agreements, provide for more specific rules to ensure the protection of the rights and freedoms in respect of the processing of employees' personal data in the employment context...`,
+                        simplified: "💼 <strong>Employment Data:</strong> Individual EU countries can create their own specific, stricter rules regarding how employers handle their employees' personal data."
+                    }
+                ]
+            },
+            {
+                id: "chapter-10",
+                title: "Chapter X: Delegated acts and implementing acts",
+                sections: [
+                    {
+                        id: "article-92",
+                        title: "Article 92: Exercise of the delegation",
+                        content: `1. The power to adopt delegated acts is conferred on the Commission subject to the conditions laid down in this Article.\n2. The delegation of power referred to in Article 12(8) and Article 43(8) shall be conferred on the Commission for an indeterminate period of time from 24 May 2016.`,
+                        simplified: "📜 <strong>Delegated Powers:</strong> The EU Commission is granted the power to adopt further specific technical standards (like standardization icons for privacy policies) over time."
+                    }
+                ]
+            },
+            {
+                id: "chapter-11",
+                title: "Chapter XI: Final provisions",
+                sections: [
+                    {
+                        id: "article-99",
+                        title: "Article 99: Entry into force and application",
+                        content: `1. This Regulation shall enter into force on the twentieth day following that of its publication in the Official Journal of the European Union.\n2. It shall apply from 25 May 2018.\nThis Regulation shall be binding in its entirety and directly applicable in all Member States.`,
+                        simplified: "📅 <strong>Enforcement Date:</strong> The GDPR officially became law and actively enforceable across the entire European Union on May 25, 2018."
+                    }
+                ]
+            }
+        ];
+
+        // --- DOM ELEMENTS ---
+        const tocContainer = document.getElementById('toc-container');
+        const contentArea = document.getElementById('content-area');
+        const searchInput = document.getElementById('search-input');
+        const searchInputMobile = document.getElementById('search-input-mobile');
+        const themeToggle = document.getElementById('theme-toggle');
+        const menuBtn = document.getElementById('menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const scrollTopBtn = document.getElementById('scroll-top');
+        const btnOfficial = document.getElementById('btn-official');
+        const btnSimplified = document.getElementById('btn-simplified');
+        const infographic = document.getElementById('eu-infographic');
+
+        // --- STATE & UTILS ---
+        let isDark = localStorage.getItem('theme') === 'dark';
+        let isSimplified = true; 
+        
+        let expandedChapters = new Set(actData.map(item => item.id));
+
+        function highlightText(text, filter) {
+            if (!filter) return text;
+            const regex = new RegExp(`(${filter})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+
+        function applyTheme() {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        function updateToggleUI() {
+            if (isSimplified) {
+                btnSimplified.className = 'px-2 sm:px-3 py-1.5 text-[10px] sm:text-xs font-bold rounded-md transition-all bg-white dark:bg-slate-700 text-eu-green dark:text-green-400 shadow-sm ring-1 ring-slate-200 dark:ring-slate-600';
+                btnOfficial.className = 'px-2 sm:px-3 py-1.5 text-[10px] sm:text-xs font-medium rounded-md transition-all text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800';
+                
+                // Show Infographic
+                if (infographic) infographic.classList.remove('hidden');
+            } else {
+                btnOfficial.className = 'px-2 sm:px-3 py-1.5 text-[10px] sm:text-xs font-bold rounded-md transition-all bg-white dark:bg-slate-700 text-eu-blue dark:text-blue-400 shadow-sm ring-1 ring-slate-200 dark:ring-slate-600';
+                btnSimplified.className = 'px-2 sm:px-3 py-1.5 text-[10px] sm:text-xs font-medium rounded-md transition-all text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800';
+                
+                // Hide Infographic
+                if (infographic) infographic.classList.add('hidden');
+            }
+        }
+
+        function renderContent(filterText = '') {
+            contentArea.innerHTML = '';
+            tocContainer.innerHTML = '';
+
+            const lowerFilter = filterText.toLowerCase();
+            const isSearching = lowerFilter.length > 0;
+
+            // Hide infographic if searching, unless field is empty
+            if (infographic) {
+                if (isSearching) {
+                     infographic.classList.add('hidden');
+                } else if (isSimplified) {
+                     infographic.classList.remove('hidden');
+                }
+            }
+
+            actData.forEach(chapter => {
+                const matchingSections = chapter.sections.filter(sec => 
+                    sec.title.toLowerCase().includes(lowerFilter) || 
+                    sec.content.toLowerCase().includes(lowerFilter) ||
+                    (sec.simplified && sec.simplified.toLowerCase().includes(lowerFilter))
+                );
+
+                if (matchingSections.length > 0) {
+                    // Chapter Header
+                    const chapterEl = document.createElement('div');
+                    chapterEl.id = chapter.id;
+                    chapterEl.className = 'chapter-header border-b border-slate-200 dark:border-slate-700 pb-8';
+                    chapterEl.innerHTML = `
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6 flex items-center gap-2 official-font tracking-tight group cursor-pointer">
+                            <span class="bg-slate-100 dark:bg-slate-800 p-1 rounded text-base text-slate-500">§</span>
+                            ${highlightText(chapter.title, lowerFilter)}
+                            <a href="#${chapter.id}" class="anchor-link"><i data-lucide="link" class="w-4 h-4"></i></a>
+                        </h2>
+                        <div class="space-y-6"></div>
+                    `;
+                    const sectionsContainer = chapterEl.querySelector('.space-y-6');
+
+                    // Sections
+                    matchingSections.forEach(section => {
+                        const secEl = document.createElement('article');
+                        secEl.id = section.id;
+                        secEl.className = 'group scroll-mt-32 p-6 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:shadow-lg dark:hover:shadow-black/50 transition-all duration-300 relative overflow-hidden';
+                        
+                        const stripColor = isSimplified ? 'bg-eu-green' : 'bg-slate-200 dark:bg-slate-700 group-hover:bg-eu-blue';
+                        const strip = document.createElement('div');
+                        strip.className = `absolute top-0 left-0 w-1 h-full ${stripColor} transition-colors`;
+                        secEl.appendChild(strip);
+
+                        let rawContent = isSimplified ? (section.simplified || section.content) : section.content;
+                        if (isSimplified && !section.simplified) {
+                            rawContent = "<i>(No simplified summary available. Official text:)</i><br><br>" + rawContent;
+                        }
+
+                        const processedContent = rawContent.replace(/\n/g, '<br>');
+
+                        const contentDiv = document.createElement('div');
+                        contentDiv.innerHTML = `
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 group-hover:text-eu-blue dark:group-hover:text-blue-400 transition-colors official-font flex items-center">
+                                    ${highlightText(section.title, lowerFilter)}
+                                    <a href="#${section.id}" class="anchor-link"><i data-lucide="link" class="w-4 h-4"></i></a>
+                                </h3>
+                                ${isSimplified && section.simplified ? '<span class="text-[10px] uppercase tracking-wider font-bold text-green-700 bg-green-100 dark:bg-green-900 dark:text-green-300 px-2 py-0.5 rounded">Simplified</span>' : ''}
+                            </div>
+                            <div class="text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base pl-2 ${isSimplified ? 'font-medium' : ''}">
+                                ${highlightText(processedContent, lowerFilter)}
+                            </div>
+                        `;
+                        secEl.appendChild(contentDiv);
+                        sectionsContainer.appendChild(secEl);
+                    });
+
+                    contentArea.appendChild(chapterEl);
+
+                    // TOC Item
+                    const tocChapter = document.createElement('div');
+                    tocChapter.className = 'mb-1';
+
+                    const isExpanded = isSearching || expandedChapters.has(chapter.id);
+
+                    const headerBtn = document.createElement('button');
+                    headerBtn.className = 'w-full flex items-center justify-between px-2 py-2 text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition-colors text-left official-font group select-none';
+                    headerBtn.onclick = () => toggleChapter(chapter.id);
+                    
+                    headerBtn.innerHTML = `
+                        <span class="truncate pr-2">${chapter.title}</span>
+                        <svg class="chevron w-4 h-4 text-slate-400 transition-transform duration-200 ${isExpanded ? '' : 'collapsed'}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    `;
+                    tocChapter.appendChild(headerBtn);
+                    
+                    const tocSectionList = document.createElement('div');
+                    tocSectionList.id = `toc-list-${chapter.id}`;
+                    tocSectionList.className = `chapter-content ml-2 border-l-2 border-slate-200 dark:border-slate-700 pl-1 ${isExpanded ? '' : 'collapsed'}`;
+                    
+                    const linksWrapper = document.createElement('div');
+                    linksWrapper.className = 'space-y-0.5 py-1';
+
+                    matchingSections.forEach(section => {
+                        const link = document.createElement('a');
+                        link.href = `#${section.id}`;
+                        link.dataset.target = section.id;
+                        link.className = 'toc-link block px-4 py-1.5 text-xs text-slate-600 dark:text-slate-400 hover:text-eu-blue dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-r-sm transition-colors truncate border-l-2 border-transparent hover:border-eu-blue';
+                        link.textContent = section.title.split(': ')[1] || section.title; // Simpler TOC text
+                        
+                        link.onclick = (e) => {
+                            e.preventDefault();
+                            const target = document.getElementById(section.id);
+                            if (target) {
+                                target.scrollIntoView({ behavior: 'smooth' });
+                                history.pushState(null, null, `#${section.id}`);
+                            }
+                            closeMobileMenu();
+                        };
+                        linksWrapper.appendChild(link);
+                    });
+                    
+                    tocSectionList.appendChild(linksWrapper);
+                    tocChapter.appendChild(tocSectionList);
+                    tocContainer.appendChild(tocChapter);
+                }
+            });
+
+            if (contentArea.innerHTML === '') {
+                contentArea.innerHTML = `
+                    <div class="text-center py-20 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                        <i data-lucide="search-x" class="w-16 h-16 text-slate-300 mx-auto mb-4"></i>
+                        <h3 class="text-xl font-bold text-slate-700 dark:text-slate-300 official-font">No results found</h3>
+                        <p class="text-slate-500 text-sm mt-2">Try adjusting your search terms.</p>
+                    </div>
+                `;
+            }
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+            setupIntersectionObserver();
+        }
+
+        function toggleChapter(id) {
+            if (expandedChapters.has(id)) {
+                expandedChapters.delete(id);
+            } else {
+                expandedChapters.add(id);
+            }
+            const list = document.getElementById(`toc-list-${id}`);
+            const btn = list.previousElementSibling;
+            const chevron = btn.querySelector('.chevron');
+            if (expandedChapters.has(id)) {
+                list.classList.remove('collapsed');
+                chevron.classList.remove('collapsed');
+            } else {
+                list.classList.add('collapsed');
+                chevron.classList.add('collapsed');
+            }
+        }
+
+        // --- EVENTS ---
+        searchInput.addEventListener('input', (e) => renderContent(e.target.value));
+        searchInputMobile.addEventListener('input', (e) => renderContent(e.target.value));
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            applyTheme();
+        });
+
+        btnOfficial.addEventListener('click', () => {
+            if (isSimplified) {
+                isSimplified = false;
+                updateToggleUI();
+                renderContent(searchInput.value || searchInputMobile.value);
+            }
+        });
+
+        btnSimplified.addEventListener('click', () => {
+            if (!isSimplified) {
+                isSimplified = true;
+                updateToggleUI();
+                renderContent(searchInput.value || searchInputMobile.value);
+            }
+        });
+
+        function openMobileMenu() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.remove('hidden');
+            setTimeout(() => sidebarOverlay.classList.remove('opacity-0'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('opacity-0');
+            setTimeout(() => sidebarOverlay.classList.add('hidden'), 300);
+            document.body.style.overflow = '';
+        }
+
+        menuBtn.addEventListener('click', openMobileMenu);
+        sidebarOverlay.addEventListener('click', closeMobileMenu);
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) scrollTopBtn.classList.remove('translate-y-20', 'opacity-0');
+            else scrollTopBtn.classList.add('translate-y-20', 'opacity-0');
+        });
+        
+        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Throttle control for history updates
+        let lastHistoryUpdate = 0;
+
+        function setupIntersectionObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        
+                        const now = Date.now();
+                        if (history.replaceState && id && (now - lastHistoryUpdate > 500)) {
+                            if (window.location.hash !== `#${id}`) {
+                                history.replaceState(null, null, `#${id}`);
+                                lastHistoryUpdate = now;
+                            }
+                        }
+
+                        document.querySelectorAll('.toc-link').forEach(link => {
+                            link.classList.remove('text-eu-blue', 'font-bold', 'bg-slate-100', 'dark:bg-slate-800', 'border-eu-blue', 'dark:text-blue-400');
+                            link.classList.add('text-slate-600', 'dark:text-slate-400', 'border-transparent');
+                        });
+                        const activeLink = document.querySelector(`.toc-link[data-target="${id}"]`);
+                        if (activeLink) {
+                            activeLink.classList.remove('text-slate-600', 'dark:text-slate-400', 'border-transparent');
+                            activeLink.classList.add('text-eu-blue', 'font-bold', 'bg-slate-100', 'dark:bg-slate-800', 'border-eu-blue', 'dark:text-blue-400');
+                        }
+                    }
+                });
+            }, { rootMargin: '-100px 0px -70% 0px' });
+            document.querySelectorAll('article, .chapter-header').forEach(section => observer.observe(section));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyTheme();
+            updateToggleUI();
+            renderContent();
+            if(window.location.hash) {
+                const id = window.location.hash.substring(1);
+                const element = document.getElementById(id);
+                if(element) setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 500);
+            }
+        });
+        
+        window.addEventListener('load', () => { if (typeof lucide !== 'undefined') lucide.createIcons(); });
+    </script>
+
+    <script>window.va=window.va||function(){(window.va.q=window.va.q||[]).push(arguments)};</script><script src="/_vercel/insights/script.js"></script>
+    <script>window.si=window.si||function(){(window.siq=window.siq||[]).push(arguments)};</script><script src="/_vercel/speed-insights/script.js"></script>  
+    
+</body>
+</html>
