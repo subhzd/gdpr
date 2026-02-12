@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Favicon & Icons -->
-    <link rel="icon" type="image/png" href="https://gdpr.aimaverick.me/gdpr.png">
-    <link rel="apple-touch-icon" href="https://gdpr.aimaverick.me/gdpr.png">
+    <link rel="icon" type="image/png" href="gdpr.png">
+    <link rel="apple-touch-icon" href="gdpr.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
@@ -28,7 +28,7 @@
     <script src="cdn.tailwindcss.com"></script>
     
     <!-- Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="lucide@latest"></script>
     
     <!-- Configuration -->
     <script>
@@ -155,7 +155,7 @@
                 <!-- Emblem & Title -->
                 <div class="flex items-center gap-3">
                     <!-- App Icon -->
-                    <img src="gdpr.png" alt="GDPR Logo" class="h-14 w-14 rounded-full border-2 border-eu-gold shadow-sm object-cover bg-eu-blue">
+                    <img src="gdpr.png" alt="GDPR Logo" class="h-12 w-12 rounded-full border-2 border-eu-gold shadow-sm object-cover bg-eu-blue">
                     
                     <div class="flex flex-col">
                         <span class="text-[0.6rem] uppercase tracking-widest font-bold text-slate-500 dark:text-slate-400">European Union</span>
@@ -533,6 +533,12 @@
                         simplified: "✅ <strong>Lawful Basis:</strong> You can only process data if you have a valid legal reason. The valid reasons are: Consent, Contract Fulfillment, Legal Obligation, Vital Interests (saving a life), Public Task, or Legitimate Interests."
                     },
                     {
+                        id: "article-7",
+                        title: "Article 7: Conditions for consent",
+                        content: `1. Where processing is based on consent, the controller shall be able to demonstrate that the data subject has consented to processing of his or her personal data.\n2. If the data subject's consent is given in the context of a written declaration which also concerns other matters, the request for consent shall be presented in a manner which is clearly distinguishable from the other matters, in an intelligible and easily accessible form, using clear and plain language...\n3. The data subject shall have the right to withdraw his or her consent at any time. The withdrawal of consent shall not affect the lawfulness of processing based on consent before its withdrawal.`,
+                        simplified: "📝 <strong>Valid Consent:</strong> If you rely on consent, you must be able to prove you got it. The request must be clear, plain, and separate from other terms. Users can withdraw their consent at any time just as easily as they gave it."
+                    },
+                    {
                         id: "article-9",
                         title: "Article 9: Processing of special categories of personal data",
                         content: `1. Processing of personal data revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, or trade union membership, and the processing of genetic data, biometric data for the purpose of uniquely identifying a natural person, data concerning health or data concerning a natural person's sex life or sexual orientation shall be prohibited.\n\n2. Paragraph 1 shall not apply if one of the following applies:\n(a) the data subject has given explicit consent...\n(b) processing is necessary for the purposes of carrying out the obligations... in the field of employment and social security...`,
@@ -551,10 +557,22 @@
                         simplified: "⏱️ <strong>Communication:</strong> Privacy notices must be easy to read and understand (no complex legalese). When a user makes a rights request, the company must respond within one month."
                     },
                     {
+                        id: "article-13",
+                        title: "Article 13: Information to be provided where personal data are collected from the data subject",
+                        content: `1. Where personal data relating to a data subject are collected from the data subject, the controller shall, at the time when personal data are obtained, provide the data subject with all of the following information:\n(a) the identity and the contact details of the controller;\n(c) the purposes of the processing for which the personal data are intended as well as the legal basis for the processing;\n(e) the recipients or categories of recipients of the personal data...\n\n2. In addition... the controller shall provide the data subject with the following further information:\n(a) the period for which the personal data will be stored...`,
+                        simplified: "📢 <strong>Privacy Notices:</strong> When you collect data from people, you must proactively tell them exactly who you are, why you need their data, how long you'll keep it, who you'll share it with, and what their privacy rights are."
+                    },
+                    {
                         id: "article-15",
                         title: "Article 15: Right of access",
                         content: `1. The data subject shall have the right to obtain from the controller confirmation as to whether or not personal data concerning him or her are being processed, and, where that is the case, access to the personal data and the following information:\n(a) the purposes of the processing;\n(b) the categories of personal data concerned;\n(c) the recipients...\n(d) the envisaged period for which the personal data will be stored...`,
                         simplified: "📜 <strong>Right of Access:</strong> You have the right to ask a company if they have your data. If they do, they must give you a free copy of it and explain why they have it and who they share it with."
+                    },
+                    {
+                        id: "article-16",
+                        title: "Article 16: Right to rectification",
+                        content: `The data subject shall have the right to obtain from the controller without undue delay the rectification of inaccurate personal data concerning him or her. Taking into account the purposes of the processing, the data subject shall have the right to have incomplete personal data completed, including by means of providing a supplementary statement.`,
+                        simplified: "✏️ <strong>Right to Rectify:</strong> If a company holds incorrect or incomplete personal information about you, you have the right to demand that they fix, update, or complete it immediately."
                     },
                     {
                         id: "article-17",
@@ -563,10 +581,22 @@
                         simplified: "🗑️ <strong>Right to be Forgotten:</strong> You can ask a company to delete your personal data if they no longer need it, if you withdraw your consent, or if you successfully object to them using it."
                     },
                     {
+                        id: "article-18",
+                        title: "Article 18: Right to restriction of processing",
+                        content: `1. The data subject shall have the right to obtain from the controller restriction of processing where one of the following applies:\n(a) the accuracy of the personal data is contested by the data subject...\n(b) the processing is unlawful and the data subject opposes the erasure of the personal data and requests the restriction of their use instead;\n(c) the controller no longer needs the personal data for the purposes of the processing, but they are required by the data subject for the establishment, exercise or defence of legal claims...`,
+                        simplified: "⏸️ <strong>Pause Processing:</strong> You can ask a company to temporarily 'freeze' your data (stop using it but keep storing it) while you dispute its accuracy or check if they have a legitimate reason to use it."
+                    },
+                    {
                         id: "article-20",
                         title: "Article 20: Right to data portability",
                         content: `1. The data subject shall have the right to receive the personal data concerning him or her, which he or she has provided to a controller, in a structured, commonly used and machine-readable format and have the right to transmit those data to another controller without hindrance...`,
                         simplified: "🧳 <strong>Data Portability:</strong> You have the right to get your data back in an easy-to-read, digital format (like a CSV or JSON file) so you can take it and move it to a competing service provider."
+                    },
+                    {
+                        id: "article-21",
+                        title: "Article 21: Right to object",
+                        content: `1. The data subject shall have the right to object, on grounds relating to his or her particular situation, at any time to processing of personal data concerning him or her which is based on point (e) or (f) of Article 6(1), including profiling based on those provisions...\n2. Where personal data are processed for direct marketing purposes, the data subject shall have the right to object at any time to processing of personal data concerning him or her for such marketing...`,
+                        simplified: "🛑 <strong>Right to Object:</strong> You can say 'no' to a company using your data. If you object to them using your data for direct marketing, they must stop immediately without exception."
                     }
                 ]
             },
@@ -593,6 +623,12 @@
                         simplified: "🤝 <strong>Vendor Contracts:</strong> If a company hires a third-party (like a cloud host) to process your data, they must sign a strict Data Processing Agreement (DPA) ensuring the third-party also follows the GDPR."
                     },
                     {
+                        id: "article-30",
+                        title: "Article 30: Records of processing activities",
+                        content: `1. Each controller and, where applicable, the controller's representative, shall maintain a record of processing activities under its responsibility. That record shall contain all of the following information:\n(a) the name and contact details of the controller...\n(b) the purposes of the processing;\n(c) a description of the categories of data subjects and of the categories of personal data;\n(d) the categories of recipients to whom the personal data have been or will be disclosed...`,
+                        simplified: "📂 <strong>Keep Records (RoPA):</strong> Companies must keep detailed internal logs (Records of Processing Activities) documenting exactly what data they collect, why they collect it, and who they share it with."
+                    },
+                    {
                         id: "article-32",
                         title: "Article 32: Security of processing",
                         content: `1. ...the controller and the processor shall implement appropriate technical and organisational measures to ensure a level of security appropriate to the risk, including inter alia as appropriate:\n(a) the pseudonymisation and encryption of personal data;\n(b) the ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems...`,
@@ -603,6 +639,18 @@
                         title: "Article 33: Notification of a personal data breach",
                         content: `1. In the case of a personal data breach, the controller shall without undue delay and, where feasible, not later than 72 hours after having become aware of it, notify the personal data breach to the supervisory authority... unless the personal data breach is unlikely to result in a risk to the rights and freedoms of natural persons.`,
                         simplified: "🚨 <strong>Breach Notification:</strong> If a company gets hacked or loses your data, they must report the breach to the authorities within 72 hours of discovering it."
+                    },
+                    {
+                        id: "article-35",
+                        title: "Article 35: Data protection impact assessment",
+                        content: `1. Where a type of processing in particular using new technologies, and taking into account the nature, scope, context and purposes of the processing, is likely to result in a high risk to the rights and freedoms of natural persons, the controller shall, prior to the processing, carry out an assessment of the impact of the envisaged processing operations on the protection of personal data.`,
+                        simplified: "🔍 <strong>Risk Assessments (DPIA):</strong> Before starting a new project that poses a high risk to people's privacy (like implementing AI or tracking location), companies must formally assess and minimize those risks."
+                    },
+                    {
+                        id: "article-37",
+                        title: "Article 37: Designation of the data protection officer",
+                        content: `1. The controller and the processor shall designate a data protection officer in any case where:\n(a) the processing is carried out by a public authority or body...\n(b) the core activities of the controller or the processor consist of processing operations which... require regular and systematic monitoring of data subjects on a large scale; or\n(c) the core activities... consist of processing on a large scale of special categories of data...`,
+                        simplified: "🕵️ <strong>Data Protection Officer (DPO):</strong> Public bodies, and companies that track people on a large scale or handle lots of sensitive data, must hire an independent expert (a DPO) to oversee their privacy compliance."
                     }
                 ]
             },
@@ -621,6 +669,12 @@
                         title: "Article 45: Transfers on the basis of an adequacy decision",
                         content: `1. A transfer of personal data to a third country or an international organisation may take place where the Commission has decided that the third country, a territory or one or more specified sectors within that third country... ensures an adequate level of protection. Such a transfer shall not require any specific authorisation.`,
                         simplified: "👍 <strong>Adequacy Decisions:</strong> The EU Commission maintains a 'white-list' of countries whose privacy laws are deemed as strong as the GDPR. Data can flow freely to these countries."
+                    },
+                    {
+                        id: "article-46",
+                        title: "Article 46: Transfers subject to appropriate safeguards",
+                        content: `1. In the absence of a decision pursuant to Article 45(3), a controller or processor may transfer personal data to a third country or an international organisation only if the controller or processor has provided appropriate safeguards, and on condition that enforceable data subject rights and effective legal remedies for data subjects are available.`,
+                        simplified: "🛡️ <strong>Appropriate Safeguards:</strong> If you transfer data to a country not on the EU's 'safe' list, you must use strong legal safeguards, like Standard Contractual Clauses (SCCs), to guarantee the data remains protected overseas."
                     }
                 ]
             },
